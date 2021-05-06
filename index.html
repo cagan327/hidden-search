@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hidden Search Widget</title>
+    <style type="text/css">
+      @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+      * {
+        margin: 0;
+      }
+      body {
+        background-color: #7d5fff;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+      }
+      .search {
+        position: relative;
+      }
+      .search .fa-search {
+        position: absolute;
+        top: 7px;
+        right: 9px;
+        color: black;
+        font-size: 30px;
+      }
+
+      input {
+        height: 40px;
+        width: 40px;
+        text-indent: 20px;
+        font-size: 22px;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      @keyframes widen {
+        from {
+          width: 40px;
+        }
+        to {
+          width: 200px;
+        }
+      }
+
+      @keyframes narrow {
+        from {
+          width: 200px;
+        }
+        to {
+          width: 40px;
+        }
+      }
+
+      input.wide {
+        animation-name: widen;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+
+      input.narrow {
+        animation-name: narrow;
+        animation-duration: 1s;
+        animation-timing-function: ease;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+      }
+    </style>
+    <script type="text/javascript">
+      function onClick() {
+        let input = document.getElementById("inputf");
+        if (input.className === "wide") {
+          input.className = "narrow";
+          input.placeholder = "";
+        } else {
+          input.className = "wide";
+          input.placeholder = "Search...";
+          input.focus();
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="search" onclick="onClick()">
+        <span class="fa fa-search"></span>
+        <input id="inputf" type="text" />
+      </div>
+    </div>
+  </body>
+</html>
